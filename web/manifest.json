@@ -5,9 +5,11 @@
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A modern, user-friendly blood donation app",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "scope": "/",
+    "gcm_sender_id": "648078735490",
     "icons": [
         {
             "src": "icons/Icon-192.png",

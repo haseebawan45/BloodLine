@@ -31,10 +31,25 @@
 
   <title>BloodLine</title>
   <link rel="manifest" href="manifest.json">
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(function(error) {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 </head>
 <body>
-  <!-- Google Maps API Script - IMPORTANT: Replace YOUR_API_KEY_HERE with your actual API key in both this file and the .env file -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script>
+  <!-- Google Maps API Script with async loading pattern -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOzN_OYTBS3lX7_eoi2AtK6cbIZcauhE0" async defer></script>
   
   <script src="flutter_bootstrap.js" async></script>
 </body>

@@ -13,7 +13,7 @@ class EnvUtils {
 
   /// Get the Google Maps API key
   static String get googleMapsApiKey => 
-    getString('GOOGLE_MAPS_API_KEY', defaultValue: 'YOUR_API_KEY_HERE');
+    getString('GOOGLE_MAPS_API_KEY', defaultValue: 'AIzaSyAOzN_OYTBS3lX7_eoi2AtK6cbIZcauhE0');
     
   /// Get the API base URL
   static String get apiBaseUrl => 

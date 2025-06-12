@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'constants/app_constants.dart';
 import 'providers/app_provider.dart';
 import 'services/network_tracker_service.dart';
@@ -88,7 +89,10 @@ Future<void> _initializeApp() async {
     );
     
     // Enable Firebase Analytics for notifications when allowed
-    FirebaseMessaging.instance.setDeliveryMetricsExportToBigQuery(true);
+    // Skip on web platform as it's not implemented
+    if (!kIsWeb) {
+      FirebaseMessaging.instance.setDeliveryMetricsExportToBigQuery(true);
+    }
     
     debugPrint('Firebase Messaging configured successfully');
   } catch (e) {
