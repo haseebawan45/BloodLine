@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - BloodLine</title>
+    <meta name="description" content="Frequently Asked Questions about the BloodLine mobile application.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <style>
+        /* Additional styles specific to the FAQ page */
+        .faq-header {
+            background-color: var(--background-dark);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .faq-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            border-top: 1px solid #eee;
+            line-height: 1.8;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-category {
+            padding: 0.5rem 1.5rem;
+            background-color: #f0f0f0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .faq-category:hover, .faq-category.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.png" alt="BloodLine Logo">
+                    <span>BloodLine</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#download">Download</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FAQ Header -->
+    <div class="faq-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to the most common questions about BloodLine</p>
+        </div>
+    </div>
+
+    <!-- FAQ Content -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-content">
+                <div class="faq-categories">
+                    <div class="faq-category active" data-category="all">All Questions</div>
+                    <div class="faq-category" data-category="account">Account</div>
+                    <div class="faq-category" data-category="donation">Donation</div>
+                    <div class="faq-category" data-category="requests">Blood Requests</div>
+                    <div class="faq-category" data-category="technical">Technical</div>
+                </div>
+                
+                <div class="faq-list">
+                    <!-- Account Questions -->
+                    <div class="faq-item" data-category="account">
+                        <div class="faq-question">
+                            <span>How do I create an account?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Creating an account is simple. Download the BloodLine app from Google Play or the App Store, open the app, and tap "Sign Up". Fill in your personal details, including your name, email, phone number, blood type, and create a password. Verify your email address, and you're all set!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="account">
+                        <div class="faq-question">
+                            <span>Can I use BloodLine without creating an account?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While you can browse some basic information without an account, creating an account is necessary to access most features of the BloodLine app, including finding donors, making blood requests, tracking donations, and managing your health profile.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="account">
+                        <div class="faq-question">
+                            <span>How do I reset my password?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you've forgotten your password, tap "Forgot Password" on the login screen. Enter your email address, and we'll send you a link to reset your password. Follow the instructions in the email to create a new password.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Donation Questions -->
+                    <div class="faq-item" data-category="donation">
+                        <div class="faq-question">
+                            <span>How often can I donate blood?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The recommended frequency for whole blood donation is every 8-12 weeks (56-84 days). This interval allows your body to replenish the donated blood cells. The BloodLine app will track your donations and notify you when you're eligible to donate again.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="donation">
+                        <div class="faq-question">
+                            <span>How does BloodLine verify my blood type?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While BloodLine initially relies on the blood type information you provide during registration, we encourage users to upload verification documents such as blood test reports or donor cards. For verified donors, a special badge appears on their profile, building trust in the community.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="donation">
+                        <div class="faq-question">
+                            <span>How do I track my donation history?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BloodLine provides a comprehensive donation tracking system. Navigate to the "Donation History" section in your profile, where you'll find all your past donations, including dates, locations, and status. You can also view helpful charts that visualize your donation frequency over time.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Blood Request Questions -->
+                    <div class="faq-item" data-category="requests">
+                        <div class="faq-question">
+                            <span>How do I create a blood request?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To create a blood request, go to the "Requests" tab and tap "Create New Request." Fill in the details including the patient's name, blood type needed, hospital location, urgency level, and any additional notes. Once submitted, the request will be visible to compatible donors in your area.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="requests">
+                        <div class="faq-question">
+                            <span>How are donors matched to my blood request?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BloodLine uses a sophisticated matching algorithm that considers blood type compatibility, donor location, availability status, and donation eligibility. When a request is created, notifications are automatically sent to the most suitable donors in the vicinity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="requests">
+                        <div class="faq-question">
+                            <span>Can I specify the urgency of my blood request?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, when creating a blood request, you can select the urgency level from "Standard" to "Emergency." Emergency requests receive priority notifications and are highlighted in the app for greater visibility to potential donors.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Questions -->
+                    <div class="faq-item" data-category="technical">
+                        <div class="faq-question">
+                            <span>Is my personal information secure?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We take data security very seriously. BloodLine uses advanced encryption technologies to protect your personal information. We only share the minimal information necessary with other users for the purpose of blood donation. For complete details, please review our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="technical">
+                        <div class="faq-question">
+                            <span>How does location tracking work in the app?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BloodLine uses your location to connect you with nearby donors or blood requests. Location permissions are optional but recommended for the best experience. You can control location permissions in your device settings or within the app's privacy settings.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-category="technical">
+                        <div class="faq-question">
+                            <span>Does BloodLine work offline?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BloodLine requires an internet connection for most features, including finding donors, creating requests, and real-time updates. However, some basic information like your donation history and saved emergency contacts may be available offline once loaded.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-more">
+                    <h3>Can't find what you're looking for?</h3>
+                    <p>If you have any other questions or need assistance, please don't hesitate to contact us.</p>
+                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="BloodLine Logo">
+                        <span>BloodLine</span>
+                    </div>
+                    <p>Connecting blood donors with recipients for a healthier world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#download">Download</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Data Protection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get the latest updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BloodLine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle FAQ answers
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Filter by category
+            const categoryButtons = document.querySelectorAll('.faq-category');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get selected category
+                    const category = button.dataset.category;
+                    
+                    // Filter items
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -7,6 +7,15 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Load keystore properties
+import java.util.Properties
+import java.io.FileInputStream
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace = "com.codematesolution.bloodline"
     compileSdk = 35
@@ -21,6 +30,21 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
+        // Add metadata compatibility flags
+        freeCompilerArgs = listOf(
+            "-Xskip-metadata-version-check",
+            "-Xskip-prerelease-check"
+        )
+    }
+
+    // Configure signing for release builds
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String
+            keyPassword = keystoreProperties["keyPassword"] as String
+            storeFile = file(keystoreProperties["storeFile"] as String)
+            storePassword = keystoreProperties["storePassword"] as String
+        }
     }
 
     defaultConfig {
@@ -41,9 +65,8 @@ android {
             isMinifyEnabled = false
             isShrinkResources = false
             
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // Use release signing configuration
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
@@ -57,8 +80,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
     
-    // Play Core library for split APK support
-    implementation("com.google.android.play:core:1.10.3")
+    // Play Core library for split APK support - removed to fix duplicate class issue
+    // implementation("com.google.android.play:core:1.10.3")
     
     // Android multidex support
     implementation("androidx.multidex:multidex:2.0.1")
