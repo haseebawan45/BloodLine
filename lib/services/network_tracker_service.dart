@@ -22,11 +22,12 @@ class NetworkTrackerService {
       // Check if we're on a platform where connectivity_plus is fully supported
       if (!kIsWeb &&
           (Platform.isAndroid || Platform.isIOS || Platform.isMacOS)) {
-        _lastConnectivityResult = await _connectivity.checkConnectivity();
+        List<ConnectivityResult> results = await _connectivity.checkConnectivity();
+        _lastConnectivityResult = results.isNotEmpty ? results.first : ConnectivityResult.none;
 
         // Listen for connectivity changes
-        _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-          _lastConnectivityResult = result;
+        _connectivity.onConnectivityChanged.listen((List<ConnectivityResult> results) {
+          _lastConnectivityResult = results.isNotEmpty ? results.first : ConnectivityResult.none;
         });
       } else {
         // On platforms where connectivity checking might not be supported (like Windows)
@@ -56,7 +57,9 @@ class NetworkTrackerService {
       }
 
       // Otherwise check connectivity
-      final connectivityResult = await _connectivity.checkConnectivity();
+      final List<ConnectivityResult> connectivityResults = await _connectivity.checkConnectivity();
+      ConnectivityResult connectivityResult = 
+          connectivityResults.isNotEmpty ? connectivityResults.first : ConnectivityResult.none;
       _lastConnectivityResult = connectivityResult;
       return connectivityResult == ConnectivityResult.wifi;
     } catch (e) {

@@ -41,10 +41,6 @@ class LocalNotificationService {
           requestAlertPermission: true,
           requestBadgePermission: true,
           requestSoundPermission: true,
-          onDidReceiveLocalNotification: (int id, String? title, String? body, String? payload) async {
-            // Handle iOS foreground notification - needed for older iOS versions
-            debugPrint('📱 [LocalNotification] Received iOS foreground notification: $title');
-          }
         );
 
     final InitializationSettings initializationSettings =
@@ -69,12 +65,9 @@ class LocalNotificationService {
     // Request notification permissions for iOS
     if (!kIsWeb) {
       await _flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
-          ?.requestPermissions(
-            alert: true,
-            badge: true,
-            sound: true,
-          );
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
     }
     
     debugPrint('📱 [LocalNotification] Local notification service initialized successfully');
@@ -343,7 +336,7 @@ class LocalNotificationService {
     }
   }
   
-  // Schedule a notification for the future
+      // Schedule a notification for the future
   Future<void> scheduleNotification({
     required String title,
     required String body,
@@ -382,9 +375,7 @@ class LocalNotificationService {
       body,
       _convertToTZDateTime(scheduledTime),
       details,
-      androidAllowWhileIdle: true,
-      uiLocalNotificationDateInterpretation: 
-          UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       payload: payload,
     );
   }
